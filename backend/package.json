@@ -1,0 +1,42 @@
+{
+  "name": "jsm-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/noto-sans-devanagari": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
+    "@fontsource/tinos": "^5.3.0",
+    "body-parser": "^1.20.3",
+    "bwip-js": "^4.11.4",
+    "consolidate": "^0.16.0",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^16.6.1",
+    "exceljs": "^4.3.0",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.5.2",
+    "multer": "^1.4.5-lts.1",
+    "mustache": "^4.2.0",
+    "mysql2": "^3.11.3",
+    "node-fetch": "^3.2.10",
+    "nodemailer": "^6.9.5",
+    "num-words": "^1.2.3",
+    "number-to-words": "^1.2.4",
+    "openai": "^3.3.0",
+    "pdfkit": "^0.15.0",
+    "pdfmake": "^0.3.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

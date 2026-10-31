@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @page {
+    size: A4;
+    size: 210mm 297mm;
+    margin: 10mm;
+    overflow: hidden;
+  }
+
+  html {
+    zoom: 0.55;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    color: #000;
+    width: calc(100% - 14mm);
+    padding: 7mm;
+    /* height: 277mm; */
+    background-color: #fff;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    padding: 0;
+  }
+
+  table table {
+    border-collapse: collapse;
+    border-left: 1px solid #333;
+    border-top: 1px solid #333;
+  }
+
+  table table td {
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 3pt;
+  }
+
+  .bdrBtm {
+    border-bottom: 1px solid #333 !important;
+  }
+
+  .bdrTop {
+    border-bottom: 1px solid #333;
+  }
+
+  table table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  table table .head,
+  table table td.head {
+    background-color: #c9c9c9;
+    text-align: center;
+  }
+
+  .small {
+    font-size: 8pt;
+  }
+
+  .smaller {
+    font-size: 7pt;
+  }
+
+  .bigger {
+    font-size: 11pt;
+  }
+
+  .logo_bg {
+    /* background-color: #969696; */
+    background-color: #d93a27;
+  }
+
+  .address {
+    text-align: center;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .header .address p,
+  .header .address h1,
+  .header .address h2 {
+    margin-bottom: 3pt;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .v-align-top {
+    vertical-align: top;
+  }
+
+  .sign_spacer td {
+    height: 18mm;
+  }
+
+  .h18mm {
+    height: 13mm;
+  }
+
+  .logo_image {
+    max-width: calc(100% - 6mm);
+    max-height: 26mm;
+    margin: 0 3mm;
+  }
+
+  .tbl_header {
+    border: 0;
+  }
+
+  .tbl_header>tbody>tr>td {
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  .v-align-btm {
+    vertical-align: bottom;
+  }
+
+  .v-align-center {
+    vertical-align: middle;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorry Receipt</title>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>
+        <table>
+          <tr class="header">
+            <td class="address">
+              <table class="tbl_header">
+                <tr>
+                  <td width="25%">
+                    <img src="{{{info.logo}}}" alt="Jai Santoshi Maa" class="logo_image" />
+                  </td>
+                  <td width="50%">
+                    <h2>JAI SANTOSHI MAA TRANSPORT</h2>
+                    <p>
+                      <strong>Head Office</strong> - S. NO. 48/1, New Urali
+                      Devachi, Pune-Saswad Road. Tal. Haweli, Dist. Pune
+                      412308
+                    </p>
+                    <p>
+                      <strong>Branch Office</strong> - WAGHOLI: S. NO. 23/24
+                      Jadhav Wear Housing, Jadhav Wasti, Priyankanagari, Nagar
+                      Road, Wagholi Dist. Pune 412207
+                    </p>
+                    <h3>GOODS ASSIGNMENT NOTE</h3>
+                  </td>
+                  <td width="25%">
+                    <img src="{{{info.laxmi}}}" alt="Jai Santoshi Maa" class="logo_image" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr class="head">
+            <td>LR No.</td>
+            <td>LR Date</td>
+            <td>From</td>
+            <td>To</td>
+            <td>Vehicle No.</td>
+            <td>Vehicle type</td>
+          </tr>
+          <tr class="center">
+            <td>{{info.lr.LRNo}}</td>
+            <td>{{info.lr.date}}</td>
+            <td>{{info.lr.from}}</td>
+            <td>{{info.lr.to}}</td>
+            <td>{{info.lr.vehicleNo}}</td>
+            <td>{{info.vehicleType.type}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="15%" class="center"><strong>Consignor</strong></td>
+            <td width="35%">
+              <p><strong>{{info.consignor.name}}</strong></p>
+              <p>{{info.consignor.address}}</p>
+            </td>
+            <td width="15%" class="center"><strong>Consignee</strong></td>
+            <td width="35%">
+              <p><strong>{{info.lr.consigneeName}}</strong></p>
+              <p>{{info.consignee.address}}</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr class="head">
+            <td>Sr. no.</td>
+            <td>No. of Articles</td>
+            <td>Description</td>
+            <td>Weight</td>
+            <td>Rate</td>
+            <td>Freight</td>
+          </tr>
+          {{#info.lr.transactions}}
+          <tr>
+            <td class="center">
+              <p>{{srNo}}</p>
+            </td>
+            <td class="center">
+              <p>{{articleNo}}</p>
+            </td>
+            <td class="center">
+              <p>{{article}} - {{description}}</p>
+            </td>
+            <td class="center">
+              <p>{{weight}}</p>
+            </td>
+            <td class="center">
+              <p>{{rate}}</p>
+            </td>
+            <td class="center">
+              <p>{{freight}}</p>
+            </td>
+          </tr>
+          {{/info.lr.transactions}} {{#info.lr.blank.length}}
+          {{#info.lr.blank}}
+          <tr>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+            </td>
+          </tr>
+          {{/info.lr.blank}} {{/info.lr.blank.length}}
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="center">{{info.totalArticles}}</td>
+            <td class="center">Total</td>
+            <td class="center">{{info.totalWeight}}</td>
+            <td>Delivery Charges</td>
+            <td class="center">{{info.lr.deliveryCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="4" rowspan="3">Remarks: {{info.lr.remark}}</td>
+            <td>LR Charges</td>
+            <td class="center">{{info.lr.lrCharges}}</td>
+          </tr>
+          <tr>
+            <td>Hamali</td>
+            <td class="center">{{info.lr.hamali}}</td>
+          </tr>
+          <tr>
+            <td class="bdrBtm bigger v-align-center">
+              <strong>Grand total</strong>
+            </td>
+            <td class="bdrBtm center bigger v-align-center">
+              <strong>{{info.lr.total}}</strong>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="border-top: 0; border-bottom: 1px solid #333">
+          <tr>
+            <td class="center head" width="40%">AT OWNERS RISK</td>
+            <td class="center head" width="30%">
+              Material Received in good Condition
+            </td>
+            <td class="center head" width="30%">
+              For JAI SANTOSHI MAA TRANSPORT
+            </td>
+          </tr>
+          <tr>
+            <td class="small">
+              Carrier is not responsible for leakage or breakage. This
+              Consignment Note is issued subject to the condition printed
+              overleaf & carrieers Act III of 1965. Declaration by Consignor-I
+              hereby solemnly declare to the Trqansport and all concerned that
+              the particulars of the consignment mentioned in the Lorry
+              Receipt are true and correct and to the entries and description
+              in our books of accounts and other related documents in our
+              possesssion or contact
+            </td>
+            <td class="center v-align-btm">
+              Receiver's Signature with stamp
+            </td>
+            <td class="center v-align-btm">Authorised Signatory</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

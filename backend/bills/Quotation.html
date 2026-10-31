@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @page {
+    size: A4;
+    size: 210mm 297mm;
+    margin: 10mm;
+    overflow: hidden;
+  }
+
+  html {
+    zoom: 0.55;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+    color: #000;
+    width: calc(100% - 14mm);
+    padding: 7mm;
+    background-color: #fff;
+  }
+
+  .logo_image {
+    max-width: calc(100% - 6mm);
+    max-height: 20mm;
+    margin: 0 3mm;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .noBdr-right {
+    border-right: none;
+  }
+
+  .noBdrBtm {
+    border-bottom: none;
+  }
+
+  .company-name {
+    text-align: center;
+    color: #c00000;
+    font-size: 26pt;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 4mm;
+  }
+
+  .company-name-sub {
+    text-align: center;
+    font-size: 12pt;
+    font-weight: normal;
+    margin-bottom: 1mm;
+  }
+
+  .company-address {
+    text-align: center;
+    font-size: 9pt;
+    margin-bottom: 1mm;
+  }
+
+  .company-mobile {
+    text-align: center;
+    font-size: 9pt;
+    margin-bottom: 1mm;
+  }
+
+  .letterhead-table {
+    width: 100%;
+    margin-bottom: 6mm;
+  }
+
+  .date-row {
+    text-align: right;
+    margin-bottom: 4mm;
+  }
+
+  .to-block {
+    margin-bottom: 5mm;
+    line-height: 1.5;
+  }
+
+  .subject-heading {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 12pt;
+    margin: 5mm 0;
+  }
+
+  .salutation {
+    margin-bottom: 4mm;
+  }
+
+  .intro-line {
+    margin-bottom: 5mm;
+  }
+
+  table.tbl_stations {
+    border-collapse: collapse;
+    margin: 0 auto 6mm auto;
+    width: 90%;
+  }
+
+  .tbl_stations th,
+  .tbl_stations td {
+    border: 1px solid #000;
+    padding: 1.5mm 3mm;
+    text-align: center;
+  }
+
+  .tbl_stations th {
+    font-weight: bold;
+  }
+
+  ul.terms-list {
+    list-style: none;
+    margin: 4mm 0 6mm 0;
+    padding: 0;
+    counter-reset: term-counter;
+  }
+
+  ul.terms-list li {
+    counter-increment: term-counter;
+    position: relative;
+    padding-left: 7mm;
+    margin-bottom: 2mm;
+    font-weight: bold;
+  }
+
+  ul.terms-list li:before {
+    content: counter(term-counter) ")";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+
+  .closing-line {
+    margin-bottom: 8mm;
+  }
+
+  .remain-line {
+    margin-bottom: 10mm;
+  }
+
+  .gst-line {
+    font-weight: bold;
+    margin-bottom: 12mm;
+  }
+
+  .signature-block {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .signature-block p {
+    margin-bottom: 10mm;
+  }
+
+  .date {
+    padding-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotation</title>
+</head>
+
+<body>
+  <table class="letterhead-table">
+    <tr style="height: 55px;">
+      <td width="13%" style="padding: 0;" class="center noBdr-right">
+        <img src="{{{info.logo}}}" alt="{{info.companyName}}" class="logo_image" />
+      </td>
+      <td width="74%" class="center">
+        <h3 class="center company-name-sub">{{info.companyTagline}}</h3>
+        <h1 class="company-name" style="font-size: 2.2em; margin-bottom: 1mm;">{{info.companyName}}</h1>
+        <p class="company-address">{{info.companyAddress}}</p>
+        <p class="company-mobile">
+          Mob. No. {{info.companyMobile}}{{#info.companyEmail}}, Email: {{info.companyEmail}}{{/info.companyEmail}}
+        </p>
+      </td>
+      <td width="13%" style="padding: 0;" class="center">
+        <img src="{{{info.laxmi}}}" alt="{{info.companyName}}" class="logo_image" />
+      </td>
+    </tr>
+  </table>
+
+  <div class="date-row">{{info.date}}</div>
+
+  <div class="to-block">
+    <p>To,</p>
+    <p><strong>{{info.quotation.customer}}</strong></p>
+    <p>{{info.quotation.customerAddress}}</p>
+  </div>
+
+  <div class="subject-heading">QUOTATION FOR TRANSPORTATION OF YOUR VALUED GOODS</div>
+
+  <p class="salutation">Dear Sir,</p>
+
+  <p class="intro-line">
+    We submit here below our competitive quotation for the transportation of your valued goods,
+    applicable from <strong>{{info.fromDate}}</strong> to <strong>{{info.toDate}}</strong>.
+  </p>
+
+  <table class="tbl_stations">
+    <tr>
+      <th>Sr.No.</th>
+      <th>Destination</th>
+      <th>Rate Per {{info.quotation.ratePer}}</th>
+      {{#info.quotation.otherField}}<th>{{info.quotation.otherField}}</th>{{/info.quotation.otherField}}
+      {{#info.quotation.field1}}<th>{{info.quotation.field1}}</th>{{/info.quotation.field1}}
+      {{#info.quotation.field2}}<th>{{info.quotation.field2}}</th>{{/info.quotation.field2}}
+      {{#info.quotation.field3}}<th>{{info.quotation.field3}}</th>{{/info.quotation.field3}}
+    </tr>
+    {{#info.stations1}}
+    <tr>
+      <td>{{srNo}}</td>
+      <td>{{station}}</td>
+      <td>Rs.{{amount}} per {{../info.quotation.ratePer}}</td>
+      {{#otherFieldValue}}<td>{{otherFieldValue}}</td>{{/otherFieldValue}}
+      {{#field1}}<td>{{field1}}</td>{{/field1}}
+      {{#field2}}<td>{{field2}}</td>{{/field2}}
+      {{#field3}}<td>{{field3}}</td>{{/field3}}
+    </tr>
+    {{/info.stations1}}
+  </table>
+
+  <ul class="terms-list">
+    <li>Rs.10 (Rupees Ten) per consignment will be charged extra as GC note charges.</li>
+    <li>Rs.04 will be extra charge per box for loading &amp; unloading.</li>
+    {{#info.quotation.termsAndCond}}<li>{{info.quotation.termsAndCond}}</li>{{/info.quotation.termsAndCond}}
+  </ul>
+
+  <p class="closing-line">Hope, you will give us an opportunity to serve you.</p>
+
+  <p class="remain-line">We Remain, Very truly yours.</p>
+
+  <p class="gst-line">Our Transportation ID (GST No): {{info.companyGST}}</p>
+
+  <div class="signature-block">
+    <p>{{info.companyName}}</p>
+    <p>Authorised Signature</p>
+  </div>
+
+  <div class="date">
+    <div style="font-size: 8pt;">Created Date: {{info.createdDate}}</div>
+    <div style="font-size: 8pt;">Print Date: {{info.printDate}}</div>
+  </div>
+</body>
+
+</html>

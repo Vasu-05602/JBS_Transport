@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @page {
+    size: A4;
+    /* size: 210mm 297mm; */
+    margin: 5mm;
+    margin-left: 5mm;
+    overflow: hidden;
+  }
+
+  html {
+    zoom: 0.66;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .table-cell {
+    position: relative;
+  }
+
+  .table-cell:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -2px;
+    background-color: #333 !important;
+    width: 1.5px;
+    height: 100%;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: #000;
+    width: calc(100% - 10mm);
+    padding: 5mm;
+    background-color: #fff;
+  }
+
+  h1 {
+    font-family: 'Times New Roman', serif;
+  }
+
+
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td {
+    padding: 1;
+  }
+
+  table table {
+    border-collapse: collapse;
+    border-left: 1.5px solid #333;
+    border-top: 1.5px solid #333;
+  }
+
+  table table td {
+    border-right: 1.5px solid #333;
+    border-bottom: 1.5px solid #333;
+    padding: 3.7px;
+    vertical-align: middle;
+  }
+
+  .logo_image {
+    max-width: calc(100% - 4mm);
+    max-height: 20mm;
+  }
+
+  .laxmi_image {
+    max-width: calc(100% - 2mm);
+    max-height: 25mm;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .noBdr-right {
+    border-right: 0;
+  }
+
+  .vAlignTop {
+    vertical-align: top;
+  }
+
+  .vAlignBtm {
+    vertical-align: bottom;
+  }
+
+  .noBdrBtm {
+    border-bottom: 0;
+  }
+
+  .content-body {
+    margin: 0.5mm 0;
+  }
+
+  .checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-bottom: 2mm;
+    margin-right: 5mm;
+    margin-left: 1mm;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .checkbox img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .copy_label {
+    background-color: #ccc;
+    display: inline-block;
+    margin-left: 2mm;
+    padding: 1mm 2mm;
+    margin-top: 1mm;
+    margin-bottom: 2mm;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .small {
+    font-size: 7pt;
+  }
+
+  .small-1 {
+    font-size: 9pt;
+  }
+
+  .noBdr {
+    border: 0 !important;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .mb1 {
+    margin-bottom: 2mm;
+  }
+
+  .mt1 {
+    margin-top: 2mm;
+  }
+
+  .noBdrTop {
+    border-top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .noBdrTop2 {
+    border-top: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .footer_gst {
+    font-size: 7pt;
+    font-weight: bold;
+    margin-left: 3mm;
+  }
+
+  .smaller {
+    font-size: 8pt;
+  }
+
+  .dashed {
+    margin-top: 5mm;
+    padding-top: 5mm;
+    border-top: 1px dotted black;
+  }
+
+  /* .dashed {
+  margin-top: 8mm;
+  padding-top: 8mm;
+  border-top: 1px dotted black;
+} */
+
+  .thin-border {
+    border-right-width: 1.2px !important;
+  }
+  .thin-border1{
+    border-right-width: 1.3px !important;
+  }
+
+  .thin-border:before {
+    width: 1.2px !important;
+    background-color: #333 !important;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorry Receipt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/JsBarcode.all.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Make sure `info.lr.lrNo` is injected correctly
+      var barcodeValue = "{{{info.lr.lrNo}}}";
+
+      // Ensure the barcode value is valid before rendering
+      if (barcodeValue) {
+        JsBarcode("#barcode", barcodeValue, {
+          width: 1,
+          height: 28,
+          displayValue: true,
+          fontSize: 15,
+          fontOptions: "bold italic",
+        });
+
+        JsBarcode("#barcode1", barcodeValue, {
+          width: 1,
+          height: 28,
+          displayValue: true,
+          fontSize: 15,
+          fontOptions: "bold italic",
+        });
+
+        JsBarcode("#barcode2", barcodeValue, {
+          width: 1,
+          height: 28,
+          displayValue: true,
+          fontSize: 15,
+          fontOptions: "bold italic",
+        });
+      } else {
+        console.error("Barcode value is missing or invalid!");
+      }
+    });
+  </script>
+</head>
+
+
+<body>
+  <table>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+          <!-- <tr style="height: 45px;"> -->
+            <tr style="height: 55px;">
+            <td width="13%" rowspan="3" style="padding: 0;" class="center noBdrBtm noBdr-right">
+              <img src="{{{info.logo}}}" alt="JBS Transport" class="logo_image" />
+            </td>
+            <td width="31.8%" rowspan="3" class="noBdrBtm center noBdr-right">
+              <h3 class="center">Jai Jagannath</h3>
+              <h1 class="center mb1" style="font-size: 2.5em">J.B.S. TRANSPUNE</h1>
+              <p class="small-1 center">
+                Jadhav Warehouse, Gat no.2324, Priyanka Nagari, opp. Datta Temple, Pune-Nagar
+                Road, Wagholi, Tal. Haveli, Dist. Pune-412207
+              </p>
+              <p class="small-1 center">
+                Mob. No. 8055424121 / 9325247465, <br />
+                Email: jbstranspune@gmail.com / purusotamdalai@gmail.com
+              </p>
+            </td>
+            <td width="12%" rowspan="3" style="padding: 0;" class="center noBdrBtm">
+              <img src="{{{info.logo}}}" alt="Jai Santoshi Maa" class="logo_image" />
+            </td>
+            <td width="12%" class="center" style="padding: 2px;">
+              <canvas id="barcode" style="width: 100%; height: auto;"></canvas>
+            </td>
+            <td width="12%" style="text-align: left; font-size: 1em; padding: 2px 6px;">
+              <strong>Date:</strong> <br /><strong>{{info.lr.date}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" style="padding: 2px 6px; vertical-align: middle;">
+              From: <strong>{{info.lr.from}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" class="noBdrBtm" style="padding: 2px 6px; vertical-align: middle;">
+              To: <strong>{{info.lr.to}}</strong>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right" style="width: 37%;">
+              Consignor: <strong>{{info.lr.consignorName}}</strong>
+            </td>
+            <td style="width: 30%;">Mobile: {{info.lr.consignorPhone}}</td>
+            <td class="center" style="width: 29.5%;">E-Way Bill no.</td>
+          </tr>
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right noBdrBtm" style="width: 40%;">
+              Consignee: <strong>{{info.lr.consigneeName}}</strong>
+            </td>
+            <td class="noBdrBtm" style="width: 30%;">Mobile: {{info.lr.consigneePhone}}</td>
+            <td class="noBdrBtm center" style="width: 30%; word-break: break-all;">{{info.lr.eWayBillNo}}</td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 50px;"> <!-- Set a fixed height for the header row -->
+            <td class="center" style="width: 10%;">No. of Pkg.</td>
+            <td class="center" style="width: 28%;">Description (Said to Content)</td>
+            <td class="center" style="width: 18%;">Invoice No</td>
+            <td class="center" style="width: 9%;">Rate</td>
+            <td colspan="3" style="width: 15%;">Freight</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.totalFreight}}</td>
+          </tr>
+          <tr> <!-- Set a fixed height for subsequent rows -->
+            <td class="vAlignTop center table-cell thin-border" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{articleNo}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 30%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{article}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td style="max-width: 255px; word-break: break-all; width: 15%;"
+              class="vAlignTop center table-cell thin-border" rowspan="5">
+              {{info.lr.invoiceNo}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{rate}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td colspan="3" style="width: 20%;">Door delivery</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.deliveryCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Hamali</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.hamali}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Billty charges</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.lrCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Other</td>
+            <td class="right" colspan="3" style="width: 15%;">0</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Total</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.total}}</td>
+          </tr>
+        </table>
+
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="noBdrTop" style="width: 100%;">
+          <tr>
+            <td style="padding: 5px; width: 69.3%;">
+              <div style="display: flex">
+                PAID
+                <div class="checkbox">
+                  {{#info.lr.isPaid}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isPaid}} {{^info.lr.isPaid}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isPaid}}
+                </div>
+                TO PAY
+                <div class="checkbox">
+                  {{#info.lr.isToPay}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isToPay}} {{^info.lr.isToPay}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isToPay}}
+                </div>
+                BILLING
+                <div class="checkbox">
+                  {{#info.lr.isTBB}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isTBB}} {{^info.lr.isTBB}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isTBB}}
+                </div>
+                <div class="copy_label">CONSIGNOR COPY</div>
+                <span style="
+                            width: 60%;
+                            display: flex;
+                            justify-content: end;
+                            font-size: 8pt;
+                          ">
+                  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created Date:
+                  {{info.createdDate}} -->
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject to Pune Jurisdiction
+                </span>
+              </div>
+              <div>
+                <p class="small">
+                  काचसामान आणि तेल डब्याची मोडतोड झाल्यास आम्ही जवाबदार नाही
+                  <span class="footer_gst">GSTIN: 27BPOPD7785R1ZP</span>
+                  <span style="
+                                width: 60%;
+                                display: flex;
+                                justify-content: end;
+                                font-size: 8pt;
+                              ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LR Print Date:
+                    {{info.printDate}}
+                  </span>
+                </p>
+                <p class="small">
+                  मालाबद्दल कोणत्याही प्रकारची तक्रार ७ दिवसांच्‍या आत लेखी
+                  करावी. अन्यथा आमची जबाबदारी नाही.
+                </p>
+              </div>
+            </td>
+            <td class="center vAlignBtm" style="padding: 3px; width:182px;">
+              <p>Receiver's Signature With Stamp</p>
+            </td>
+            <td class="center vAlignBtm" style="padding: 4px">
+              <span>{{info.user}}</span>
+              <p>For J.B.S. TRANSPUNE</p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+  <div class="dashed"></div>
+  <table>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+          <!-- <tr style="height: 45px;"> -->
+            <tr style="height: 55px;">
+            <td width="13%" rowspan="3" style="padding: 0;" class="center noBdrBtm noBdr-right">
+              <img src="{{{info.logo}}}" alt="JBS Transport" class="logo_image" />
+            </td>
+            <td width="31.8%" rowspan="3" class="noBdrBtm center noBdr-right">
+              <h3 class="center">Jai Jagannath</h3>
+              <h1 class="center mb1" style="font-size: 2.5em">J.B.S. TRANSPUNE</h1>
+              <p class="small-1 center">
+                Jadhav Warehouse, Gat no.2324, Priyanka Nagari, opp. Datta Temple, Pune-Nagar
+                Road, Wagholi, Tal. Haveli, Dist. Pune-412207
+              </p>
+              <p class="small-1 center">
+                Mob. No. 8055424121 / 9325247465, <br />
+                Email: jbstranspune@gmail.com / purusotamdalai@gmail.com
+              </p>
+            </td>
+            <td width="12%" rowspan="3" style="padding: 0;" class="center noBdrBtm">
+              <img src="{{{info.logo}}}" alt="Jai Santoshi Maa" class="logo_image" />
+            </td>
+            <td width="12%" class="center" style="padding: 2px;">
+              <canvas id="barcode" style="width: 100%; height: auto;"></canvas>
+            </td>
+            <td width="12%" style="text-align: left; font-size: 1em; padding: 2px 6px;">
+              <strong>Date:</strong> <br /><strong>{{info.lr.date}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" style="padding: 2px 6px; vertical-align: middle;">
+              From: <strong>{{info.lr.from}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" class="noBdrBtm" style="padding: 2px 6px; vertical-align: middle;">
+              To: <strong>{{info.lr.to}}</strong>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right" style="width: 37%;">
+              Consignor: <strong>{{info.lr.consignorName}}</strong>
+            </td>
+            <td style="width: 30%;">Mobile: {{info.lr.consignorPhone}}</td>
+            <td class="center" style="width: 29.5%;">E-Way Bill no.</td>
+          </tr>
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right noBdrBtm" style="width: 40%;">
+              Consignee: <strong>{{info.lr.consigneeName}}</strong>
+            </td>
+            <td class="noBdrBtm" style="width: 30%;">Mobile: {{info.lr.consigneePhone}}</td>
+            <td class="noBdrBtm center" style="width: 30%; word-break: break-all;">{{info.lr.eWayBillNo}}</td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 50px;"> <!-- Set a fixed height for the header row -->
+            <td class="center" style="width: 10%;">No. of Pkg.</td>
+            <td class="center" style="width: 28%;">Description (Said to Content)</td>
+            <td class="center" style="width: 18%;">Invoice No</td>
+            <td class="center" style="width: 9%;">Rate</td>
+            <td colspan="3" style="width: 15%;">Freight</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.totalFreight}}</td>
+          </tr>
+          <tr> <!-- Set a fixed height for subsequent rows -->
+            <td class="vAlignTop center table-cell thin-border" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{articleNo}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 30%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{article}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td style="max-width: 255px; word-break: break-all; width: 15%;"
+              class="vAlignTop center table-cell thin-border" rowspan="5">
+              {{info.lr.invoiceNo}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{rate}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td colspan="3" style="width: 20%;">Door delivery</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.deliveryCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Hamali</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.hamali}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Billty charges</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.lrCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Other</td>
+            <td class="right" colspan="3" style="width: 15%;">0</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Total</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.total}}</td>
+          </tr>
+        </table>
+
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="noBdrTop" style="width: 100%;">
+          <tr>
+            <td style="padding: 5px; width: 69.3%;">
+              <div style="display: flex">
+                PAID
+                <div class="checkbox">
+                  {{#info.lr.isPaid}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isPaid}} {{^info.lr.isPaid}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isPaid}}
+                </div>
+                TO PAY
+                <div class="checkbox">
+                  {{#info.lr.isToPay}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isToPay}} {{^info.lr.isToPay}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isToPay}}
+                </div>
+                BILLING
+                <div class="checkbox">
+                  {{#info.lr.isTBB}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isTBB}} {{^info.lr.isTBB}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isTBB}}
+                </div>
+                <div class="copy_label">CONSIGNEE COPY</div>
+                <span style="
+                            width: 60%;
+                            display: flex;
+                            justify-content: end;
+                            font-size: 8pt;
+                          ">
+                  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created Date:
+                  {{info.createdDate}} -->
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject to Pune Jurisdiction
+                </span>
+              </div>
+              <div>
+                <p class="small">
+                  काचसामान आणि तेल डब्याची मोडतोड झाल्यास आम्ही जवाबदार नाही
+                  <span class="footer_gst">GSTIN: 27BPOPD7785R1ZP</span>
+                  <span style="
+                                width: 60%;
+                                display: flex;
+                                justify-content: end;
+                                font-size: 8pt;
+                              ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LR Print Date:
+                    {{info.printDate}}
+                  </span>
+                </p>
+                <p class="small">
+                  मालाबद्दल कोणत्याही प्रकारची तक्रार ७ दिवसांच्‍या आत लेखी
+                  करावी. अन्यथा आमची जबाबदारी नाही.
+                </p>
+              </div>
+            </td>
+            <td class="center vAlignBtm" style="padding: 3px; width:182px;">
+              <p>Receiver's Signature With Stamp</p>
+            </td>
+            <td class="center vAlignBtm" style="padding: 4px">
+              <span>{{info.user}}</span>
+              <p>For J.B.S. TRANSPUNE</p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+  <div class="dashed"></div>
+  <table>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+          <!-- <tr style="height: 45px;"> -->
+            <tr style="height: 55px;">
+            <td width="13%" rowspan="3" style="padding: 0;" class="center noBdrBtm noBdr-right">
+              <img src="{{{info.logo}}}" alt="JBS Transport" class="logo_image" />
+            </td>
+            <td width="31.8%" rowspan="3" class="noBdrBtm center noBdr-right">
+              <h3 class="center">Jai Jagannath</h3>
+              <h1 class="center mb1" style="font-size: 2.5em">J.B.S. TRANSPUNE</h1>
+              <p class="small-1 center">
+                Jadhav Warehouse, Gat no.2324, Priyanka Nagari, opp. Datta Temple, Pune-Nagar
+                Road, Wagholi, Tal. Haveli, Dist. Pune-412207
+              </p>
+              <p class="small-1 center">
+                Mob. No. 8055424121 / 9325247465, <br />
+                Email: jbstranspune@gmail.com / purusotamdalai@gmail.com
+              </p>
+            </td>
+            <td width="12%" rowspan="3" style="padding: 0;" class="center noBdrBtm">
+              <img src="{{{info.logo}}}" alt="Jai Santoshi Maa" class="logo_image" />
+            </td>
+            <td width="12%" class="center" style="padding: 2px;">
+              <canvas id="barcode" style="width: 100%; height: auto;"></canvas>
+            </td>
+            <td width="12%" style="text-align: left; font-size: 1em; padding: 2px 6px;">
+              <strong>Date:</strong> <br /><strong>{{info.lr.date}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" style="padding: 2px 6px; vertical-align: middle;">
+              From: <strong>{{info.lr.from}}</strong>
+            </td>
+          </tr>
+          <tr style="height: 38px;">
+            <td colspan="2" class="noBdrBtm" style="padding: 2px 6px; vertical-align: middle;">
+              To: <strong>{{info.lr.to}}</strong>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right" style="width: 37%;">
+              Consignor: <strong>{{info.lr.consignorName}}</strong>
+            </td>
+            <td style="width: 30%;">Mobile: {{info.lr.consignorPhone}}</td>
+            <td class="center" style="width: 29.5%;">E-Way Bill no.</td>
+          </tr>
+          <tr style="height: 38px;"> <!-- Set a fixed height for the rows -->
+            <td class="noBdr-right noBdrBtm" style="width: 40%;">
+              Consignee: <strong>{{info.lr.consigneeName}}</strong>
+            </td>
+            <td class="noBdrBtm" style="width: 30%;">Mobile: {{info.lr.consigneePhone}}</td>
+            <td class="noBdrBtm center" style="width: 30%; word-break: break-all;">{{info.lr.eWayBillNo}}</td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="width: 100%; table-layout: fixed;">
+          <tr style="height: 50px;"> <!-- Set a fixed height for the header row -->
+            <td class="center" style="width: 10%;">No. of Pkg.</td>
+            <td class="center" style="width: 28%;">Description (Said to Content)</td>
+            <td class="center" style="width: 18%;">Invoice No</td>
+            <td class="center" style="width: 9%;">Rate</td>
+            <td colspan="3" style="width: 15%;">Freight</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.totalFreight}}</td>
+          </tr>
+          <tr> <!-- Set a fixed height for subsequent rows -->
+            <td class="vAlignTop center table-cell thin-border" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{articleNo}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 30%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{article}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td style="max-width: 255px; word-break: break-all; width: 15%;"
+              class="vAlignTop center table-cell thin-border" rowspan="5">
+              {{info.lr.invoiceNo}}
+            </td>
+            <td class="vAlignTop center table-cell thin-border1" rowspan="5" style="width: 10%;">
+              {{#info.lr.transactions}}
+              <p class="content-body">{{rate}}</p>
+              {{/info.lr.transactions}}
+            </td>
+            <td colspan="3" style="width: 20%;">Door delivery</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.deliveryCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Hamali</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.hamali}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Billty charges</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.lrCharges}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Other</td>
+            <td class="right" colspan="3" style="width: 15%;">0</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="width: 20%;">Total</td>
+            <td class="right" colspan="3" style="width: 15%;">{{info.lr.total}}</td>
+          </tr>
+        </table>
+
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="noBdrTop" style="width: 100%;">
+          <tr>
+            <td style="padding: 5px; width: 69.3%;">
+              <div style="display: flex">
+                PAID
+                <div class="checkbox">
+                  {{#info.lr.isPaid}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isPaid}} {{^info.lr.isPaid}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isPaid}}
+                </div>
+                TO PAY
+                <div class="checkbox">
+                  {{#info.lr.isToPay}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isToPay}} {{^info.lr.isToPay}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isToPay}}
+                </div>
+                BILLING
+                <div class="checkbox">
+                  {{#info.lr.isTBB}}
+                  <img src="{{{info.checked}}}" alt="Checked" />
+                  {{/info.lr.isTBB}} {{^info.lr.isTBB}}
+                  <img src="{{{info.unchecked}}}" alt="Unchecked" />
+                  {{/info.lr.isTBB}}
+                </div>
+                <div class="copy_label">DRIVER COPY</div>
+                <span style="
+                            width: 60%;
+                            display: flex;
+                            justify-content: end;
+                            font-size: 8pt;
+                          ">
+                  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created Date:
+                  {{info.createdDate}} -->
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject to Pune Jurisdiction
+                </span>
+              </div>
+              <div>
+                <p class="small">
+                  काचसामान आणि तेल डब्याची मोडतोड झाल्यास आम्ही जवाबदार नाही
+                  <span class="footer_gst">GSTIN: 27BPOPD7785R1ZP</span>
+                  <span style="
+                                width: 60%;
+                                display: flex;
+                                justify-content: end;
+                                font-size: 8pt;
+                              ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LR Print Date:
+                    {{info.printDate}}
+                  </span>
+                </p>
+                <p class="small">
+                  मालाबद्दल कोणत्याही प्रकारची तक्रार ७ दिवसांच्‍या आत लेखी
+                  करावी. अन्यथा आमची जबाबदारी नाही.
+                </p>
+              </div>
+            </td>
+            <td class="center vAlignBtm" style="padding: 3px; width:182px;">
+              <p>Receiver's Signature With Stamp</p>
+            </td>
+            <td class="center vAlignBtm" style="padding: 4px">
+              <span>{{info.user}}</span>
+              <p>For J.B.S. TRANSPUNE</p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

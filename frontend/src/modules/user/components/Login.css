@@ -1,0 +1,200 @@
+.wrap-input {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 25px;
+}
+.input {
+  outline: none;
+  border: none;
+}
+
+.input100 {
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  padding: 0 30px 0 60px;
+}
+
+.focus-input100 {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+}
+
+.symbol-input100 {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #666666;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: orange;
+  padding-left: 28px;
+}
+.forgot_pw {
+  text-align: right;
+  padding: 0px 10px;
+  color: red;
+  font-weight: bolder;
+}
+
+.col-lg-6.mb-5.mb-lg-0.form {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.col-lg-6.mb-5.mb-lg-0.form.signup {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border: 0;
+  width: 70% !important;
+  display: flex;
+  justify-content: left;
+  border-radius: 30px;
+}
+
+.btn-block {
+  background-color: orange;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.card.signup {
+  border: 0;
+  width: 50% !important;
+  display: flex;
+  justify-content: left;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+a.btn.btn-primary.btn-lg.btn-block {
+  border: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.sectionimage {
+  background-image: url("../../../assets/login-design_ver_01_bkup.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+img.imgontop {
+  position: absolute;
+  width: 220px;
+  height: 130px;
+  border-Bottom-left-radius: 10px; 
+  border-Bottom-right-radius: 10px;
+}
+
+
+.row.gx-lg-5.align-items-center.down {
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    border: 0;
+    width: 100% !important;
+    display: flex;
+    justify-content: left;
+    border-radius: 30px;
+  }
+  .card.signup {
+    border: 0;
+    width: 100% !important;
+    display: flex;
+    justify-content: left;
+    border-radius: 30px;
+    margin-top: -30px;
+  }
+  .row.gx-lg-5.align-items-center.down {
+    margin-top: 130px;
+  }
+}
+
+.divider::after {
+  content: "";
+  height: 6px;
+  width: 70%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(223, 102, 102, 0),
+    rgb(222 106 106),
+    rgb(0 0 0 / 0%)
+  );
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 0%;
+}
+
+.col-lg-12.buttonform {
+  display: flex;
+  justify-content: center;
+}
+
+#toggler {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.button {
+  font-family: "Lato", sans-serif !important;
+  font-weight: bold !important;
+}
+
+.h1 {
+  color: white;
+  font-family: "Lato", sans-serif !important;
+}
+.h4 {
+  color: white;
+  font-family: "Lato", sans-serif !important;
+  font-weight: lighter;
+}
+.p {
+  color: white;
+  font-family: "Lato", sans-serif !important;
+  font-weight: lighter;
+}
+
+p.lable {
+  padding-top: 10px;
+}
+
+a.signupbtn {
+  background-color: white;
+  color: orange;
+}

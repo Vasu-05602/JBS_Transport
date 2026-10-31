@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @page {
+    margin: 0;
+  }
+
+  html {
+    zoom: 0.95;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body{
+    font-family:"Times New Roman", serif;
+    font-size:9pt;
+    color:#000;
+    width:calc(100% - 14mm);
+    padding:7mm;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  .small {
+    font-size: 8pt;
+  }
+
+  .smaller {
+    font-size: 7pt;
+  }
+
+  table table {
+    border-collapse: collapse;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+  }
+
+  table table td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 1mm;
+  }
+
+  tr.btmBdr0>td {
+    border-bottom: 0 !important;
+  }
+
+  h1 {
+    font-size: 13pt;
+    text-align: center;
+    margin-bottom: 5pt;
+    font-family: 'Times New Roman',serif; 
+    font-weight: bold !important;
+  }
+
+  h2 {
+    color: black;
+    font-size: 11pt;
+    text-align: center;
+    margin-bottom: 2pt;
+    font-family: 'Times New Roman',serif; 
+    font-weight: bold !important;
+  }
+
+  .head {
+    text-align: center;
+    margin-bottom: 5pt;
+    margin-top:0;
+  }
+
+  .head p {
+    margin-bottom: 1pt;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .valignMiddle {
+    vertical-align: middle;
+  }
+
+  .logo_image {
+    max-width: calc(100% - 6mm);
+    max-height: 26mm;
+    margin: 0 3mm;
+  }
+
+  .logo_image-1 {
+    max-width: 150px;
+    max-height: 90px;
+    margin: 0 3mm;
+  }
+
+  .tbl-header {
+    border: 0;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+
+  .tbl-header td {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .tboby-list td{
+    word-break:break-word;
+    white-space:normal;
+    overflow-wrap:break-word;
+  }
+
+  .date {
+    padding-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+
+  .tbl_lrList tr{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+
+  .tbl_lrList thead{
+    display:table-header-group;
+  }
+
+  .tbl_lrList tfoot{
+    display:table-footer-group;
+  }
+
+  .tbl_lrList tr:first-child td{
+    text-align:center;
+    vertical-align:middle;
+    font-weight:bold;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page-footer {
+    font-size: 8pt;
+    text-align: right;
+    margin-top: 2mm;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challan</title>
+</head>
+
+<body>
+{{#info.lr.pages}}
+  <table class="tbl-header" style="table-layout: fixed; width: 100%;">
+    <tr>
+      <td width="25%" class="center">
+        <img src="{{{info.logo}}}" alt="Jai Santoshi Maa" class="logo_image-1" />
+      </td>
+      <td width="50%" class="center">
+        <h2>Freight Invoice</h2>
+        <h1>J.B.S. TRANSPUNE</h1>
+      </td>
+      <td width="25%" class="center">
+        <img src="{{{info.logo}}}" alt="J.B.S." class="logo_image" />
+      </td>
+    </tr>
+  </table>
+  <div class="head">
+    <p>
+      Jadhav Warwhouse, Gat no.2324, Priyanka Nagari, Opp. Datta Temple, Pune - Nagar Road,  
+      Wagholi, Tal,<br/> Haveli, Dist. Pune - 412 207.
+    </p>
+    <p><strong>Mob:</strong> 8055424121,9325247465</p>
+    <p><strong>Email:</strong>jbstranspune@gmail.com,purusotamdalai@gmail.com</p>
+    <p><strong>J.B.S. GST No.:</strong> 27BPOPD7785R1ZP</p>
+  </div>
+  <table style="table-layout: fixed; width: 100%;">
+    <tr>
+      <td>
+        <table style="table-layout: fixed; width: 100%;">
+          <tr class="btmBdr0">
+            <td style="width: 34.4%;">
+              <p><strong>Name:</strong>{{info.lr.customerName}}</p>
+              <p><strong>Address:</strong>  {{info.lr.customerAddress}}</p>
+              <p><strong>Mob:</strong> {{info.lr.customerPhone}}</p>
+            </td>
+            <td style="width: 29.7%;">
+              <p><strong>COMPANY GST No:</strong> {{info.lr.customerGst}}</p>
+            </td>
+            <td style="width: 30%;">
+              <p><strong>Bill No:</strong> {{info.lr.billNo}}</p>
+              <p><strong>Bill Date:</strong> {{info.lr.date}}</p>
+            </td>
+          </tr>
+        </table>        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="tbl_lrList" style="table-layout: fixed; width: 100%;">
+          <tr>
+            <td style="width:3%"><strong>Sr.</strong></td>
+            <td style="width:9%"><strong>Date</strong></td>
+            <td style="width:8%"><strong>LR No.</strong></td>
+            <td style="width:10%"><strong>Station</strong></td>
+            <td style="width:8%"><strong>Article</strong></td>
+            <td style="width:21%"><strong>Party Name</strong></td>
+            <td style="width:6%"><strong>Invoice<br>No.</strong></td>
+            <td style="width:5%"><strong>No. of<br>Article</strong></td>
+            <td style="width:5%"><strong>Rate</strong></td>
+            <td style="width:5%"><strong>LR<br>Charge</strong></td>
+            <td style="width:5%"><strong>Hamali</strong></td>
+            <td style="width:5%"><strong>DD<br>Charges</strong></td>
+            <td style="width:10%"><strong>Amount</strong></td>
+          </tr>
+          {{#transactions}}
+          <tr class="tboby-list">
+            <td>{{srNo}}</td>
+            <td>{{formattedDate}}</td>
+            <td>{{formattedLRNo}}</td>
+            <td>{{to}}</td>
+            <td>{{article}}</td>
+            <td>{{customer_name}}</td>
+            <td class="right">{{InvoiceNo}}</td>
+            <td class="right">{{articleNo}}</td>
+            <td class="right">{{rate}}</td>
+            <td class="right">{{lrCharges}}</td>
+            <td class="right">{{hamali}}</td>
+            <td class="right">{{deliveryCharges}}</td>
+            <td class="right">{{total}}</td>
+          </tr>
+          {{/transactions}}
+          {{#info.blankRows}}
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          {{/info.blankRows}}
+        </table>
+      </td>
+    </tr>
+
+    {{#isLastPage}}
+    <tr>
+      <td>
+        <table style="table-layout: fixed; width: 100%;">
+          <tr class="btmBdr0">
+            <td class="valignMiddle" style="width: 75%;">
+              <p><strong>Total Articles:</strong> {{info.lr.totalArticles}}</p>
+              <p><strong>Total Weight:</strong> {{info.lr.totalWeight}}</p>
+            </td>
+            <td width="35%">
+              <table>
+                <tr>
+                  <td width="50%"><strong>Total Freight</strong></td>
+                  <td class="center"></td>
+                  <td class="right">{{info.lr.totalFreight}}</td>
+                </tr>
+                <tr>
+                  <td><strong>Other Freight</strong></td>
+                  <td class="center"></td>
+                  <td class="right">{{info.lr.freight}}</td>
+                </tr>
+                <tr>
+                  <td><strong>Local Freight</strong></td>
+                  <td class="center"></td>
+                  <td class="right">{{info.lr.localFreight}}</td>
+                </tr>
+                <tr>
+                  <td><strong>CGST</strong></td>
+                  <td class="center">{{info.lr.cgstPercent}}%</td>
+                  <td class="right">{{info.lr.cgst}}</td>
+                </tr>
+                <tr>
+                  <td><strong>SGST</strong></td>
+                  <td class="center">{{info.lr.sgstPercent}}%</td>
+                  <td class="right">{{info.lr.sgst}}</td>
+                </tr>
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td class="center"></td>
+                  <td class="right">{{info.lr.grandTotal}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="table-layout: fixed; width: 100%;">
+          <tr class="btmBdr0">
+            <td>
+              <strong>In Words:{{info.lr.totalInWords}} ONLY </strong>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table style="table-layout: fixed; width: 100%;">
+          <tr class="btmBdr0">
+            <td><strong>Remark:{{info.lr.remark}}</strong></td>
+            <td class="center" width="32%">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>For J.B.S. Transpune</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td>BEING TRANSPORTATION CHARGES FOR YOUR GOODS AS PER DETAIL</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    {{/isLastPage}}
+  </table>
+
+  {{#isLastPage}}
+  <div class="date">
+    <div style="font-size: 8pt;">Created Date: {{info.createdDate}}</div>
+    <div style="font-size: 8pt;">Print Date: {{info.printDate}}</div>
+  </div>
+  <div style="font-size: 15px;align-items: center;text-align: center;font-weight: bold;">This is Computer Generated Bill, does not require Signature</div>
+  {{/isLastPage}}
+
+  <div class="page-footer">Page {{pageNumber}} of {{totalPages}}</div>
+
+  {{^isLastPage}}
+  <div class="page-break"></div>
+  {{/isLastPage}}
+{{/info.lr.pages}}
+</body>
+
+</html>

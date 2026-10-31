@@ -1,0 +1,34 @@
+.tbl_permissions {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+.tbl_permissions .head {
+  font-size: 1.2em;
+  padding: 10px 5px;
+  background-color: #fff !important;
+}
+
+.tbl_permissions td {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.tbl_permissions tr td:nth-child(1),
+.tbl_permissions tr td:nth-child(2),
+.tbl_permissions tr td:nth-child(5),
+.tbl_permissions tr td:nth-child(6),
+.tbl_permissions tr td:nth-child(9),
+.tbl_permissions tr td:nth-child(10) {
+  background-color: #f1f1f1;
+}
+
+/* .tbl_permissions tr td:nth-child(2),
+.tbl_permissions tr td:nth-child(3),
+.tbl_permissions tr td:nth-child(5),
+.tbl_permissions tr td:nth-child(6) {
+  text-align: center;
+} */
+
+

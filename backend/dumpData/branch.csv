@@ -1,0 +1,4 @@
+BranchID,branchCode,abbreviation,name,description,place,printer,OpeningBalance,BalType
+1,P,P,PUNE,Fursungi,1,2,10000,1
+3,W,W,WAGHOLI,WAGHOLI,1,1,NULL,1
+4,SOLAPUR,SOLAPUR,SOLAPUR,SOLAPUR,1,2,NULL,1

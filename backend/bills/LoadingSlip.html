@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @page {
+    size: A4;
+    size: 210mm 297mm;
+    margin: 4mm;
+    overflow: hidden;
+  }
+
+  html {
+    zoom: 0.55;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 17.5pt;
+    color: #000;
+    width: calc(100% - 4mm);
+    padding: 2mm;
+    background-color: #fff;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  .small {
+    font-size: 17pt;
+  }
+
+  .smaller {
+    font-size: 16pt;
+  }
+
+  table table {
+    border-collapse: collapse;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+  }
+
+  table table td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 0.5mm;
+  }
+
+  tr.btmBdr0 td {
+    border-bottom: 0 !important;
+  }
+
+  h1 {
+    color: red;
+    font-size: 21pt;
+    text-align: center;
+    margin-bottom: 1pt;
+    font-family: 'Times New Roman', serif;
+  }
+
+  h2 {
+    color: black;
+    font-size: 21pt;
+    text-align: center;
+    margin-bottom: 3pt;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .driver_info td {
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 13.5pt;
+  }
+
+  .driver_info label {
+    display: inline-block;
+    min-width: 24mm;
+    font-weight: normal;
+  }
+
+  .bl_checkboxes {
+    margin-top: 2mm;
+    margin-bottom: 2mm;
+  }
+
+  .bl_checkbox {
+    display: inline-block;
+    margin-right: 2mm;
+  }
+
+  .checkbox {
+    display: inline-block;
+    border: 1px solid black;
+    width: 3.5mm;
+    height: 3.5mm;
+    vertical-align: top;
+    margin-top: -0.5mm;
+    margin-right: 2mm;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .tbl_lrList {
+    font-size: 16pt;
+  }
+
+  .tbl_lrList td {
+    word-wrap: break-word;
+    word-break: break-word;
+    vertical-align: middle;
+    line-height: 1.2;
+    padding: 0.7mm 1mm;
+  }
+
+  .tbl_lrList td.invoice-cell {
+    max-width: 200px;
+    overflow: hidden;
+  }
+
+  .tbl-header {
+    border: 0;
+  }
+
+  .tbl-header td {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .logo_image {
+    max-width: calc(100% - 4mm);
+    max-height: 30mm;
+    margin: 0 3mm;
+  }
+
+  .logo_image-1 {
+    max-width: 170px;
+    max-height: 105px;
+    margin: 0 3mm;
+  }
+
+  .date {
+    padding-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+
+  .head {
+    text-align: center;
+    margin-bottom: 3pt;
+    margin-top: 0;
+  }
+
+  .page-footer {
+    position: fixed;
+    bottom: 2mm;
+    right: 4mm;
+    font-family: 'Times New Roman', serif;
+    font-size: 11pt;
+    color: #000;
+  }
+
+  .head p {
+    font-size: 12pt;
+    margin-bottom: 1pt;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challan</title>
+</head>
+
+<body>
+{{#info.lsData.pages}}
+  <table class="tbl-header">
+    <colgroup>
+      <col style="width: 25%">
+      <col style="width: 50%">
+      <col style="width: 25%">
+    </colgroup>
+    <tr>
+      <td class="center">
+        <img src="{{{info.logo}}}" alt="JBS TRANSPUNE" class="logo_image-1" />
+      </td>
+      <td class="center">
+        <h1 style="font-size: 2.1em;">J.B.S. TRANSPUNE</h1>
+        <h2>Lorry Receipt Challan</h2>
+      </td>
+      <td class="center">
+        <img src="{{{info.logo}}}" alt="JBS TRANSPUNE" class="logo_image" />
+      </td>
+    </tr>
+  </table>
+
+  <div class="head">
+    <p>
+      Jadhav Warwhouse, Gat no.2324, Priyanka Nagari, Opp. Datta Temple, Pune - Nagar Road,
+      Wagholi, Tal,<br /> Haveli, Dist. Pune - 412 207.
+    </p>
+    <p><strong>Mob:</strong> 8055424121,9325247465</p>
+    <p><strong>Email:</strong>jbstranspune@gmail.com,purusotamdalai@gmail.com</p>
+    <p><strong>J.B.S. GST No.:</strong> 27BPOPD7785R1ZP</p>
+  </div>
+
+  <table>
+    <tr>
+      <td>
+        <table>
+          <colgroup>
+            <col style="width: 17.3%">
+            <col style="width: 28.3%">
+            <col style="width: 15.8%">
+            <col style="width: 23.3%">
+            <col style="width: 15.3%">
+          </colgroup>
+          <tr class="btmBdr0">
+            <td>LFSD No: {{info.lsData.lsNo}}</td>
+            <td>Vehicle No: {{info.lsData.vehicleNo}}</td>
+            <td>From: {{info.lsData.fromName}}</td>
+            <td>To: {{info.lsData.toName}}</td>
+            <td>Date: {{info.lsData.date}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="driver_info">
+          <colgroup>
+            <col style="width: 27.9%">
+            <col style="width: 34.2%">
+            <col style="width: 37.9%">
+          </colgroup>
+          <tr class="btmBdr0">
+            <td>
+              <p><label>Owner Name:</label> {{info.lsData.vehicleOwner}}</p>
+              <p><label>Address:</label> {{info.lsData.vehicleOwnerAddress}}</p>
+              <p><label>Contact No:</label> {{info.lsData.vehicleOwnerPhone}}</p>
+            </td>
+            <td>
+              <p><label>Driver Name:</label> {{info.lsData.driverName}}</p>
+              <p><label>License No:</label> {{info.lsData.licenseNo}}</p>
+              <p><label>Mobile No:</label> {{info.lsData.phone}}</p>
+            </td>
+            <td>
+              <p><label>Agent's Name/Owner Name:</label> {{info.lsData.vehicleOwner}}</p>
+              <p><label>Address:</label> {{info.lsData.vehicleOwnerAddress}}</p>
+              <p><label>Contact No:</label> {{info.lsData.vehicleOwnerPhone}}</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="tbl_lrList">
+          <colgroup>
+            <col style="width: 4%">   <!-- Sr. No -->
+            <col style="width: 8%">   <!-- LR No -->
+            <col style="width: 11%">  <!-- InvoiceNo -->
+            <col style="width: 15%">  <!-- Destination -->
+            <col style="width: 15%">  <!-- Consignor -->
+            <col style="width: 14%">  <!-- Consignee -->
+            <col style="width: 5%">   <!-- Articles -->
+            <col style="width: 5%">   <!-- PMode -->
+            <col style="width: 10%">  <!-- Amount -->
+          </colgroup>
+          <tr>
+            <td class="center"><strong>Sr. No.</strong></td>
+            <td class="center"><strong>LR No.</strong></td>
+            <td class="center"><strong>InvoiceNo</strong></td>
+            <td class="center"><strong>Destination</strong></td>
+            <td class="center"><strong>Consignor</strong></td>
+            <td class="center"><strong>Consignee</strong></td>
+            <td class="center"><strong>Articles</strong></td>
+            <td class="center"><strong>PMode</strong></td>
+            <td class="center"><strong>Amount</strong></td>
+          </tr>
+          {{#lrList}}
+          <tr>
+            <td class="center">{{srNo}}</td>
+            <td class="center">{{lrNo}}</td>
+            <td class="center">{{InvoiceNo}}</td>
+            <td>{{consigneeAddress}}</td>
+            <td>{{consignorNameMr}}</td>
+            <td>{{consigneeNameMr}}</td>
+            <td class="right">{{articles}}</td>
+            <td class="right">{{payType}}</td>
+            <td class="right">{{total}}</td>
+          </tr>
+          {{/lrList}}
+          {{#isLastPage}}
+          <tr>
+            <td colspan="8" class="right"><strong>Total</strong></td>
+            <td class="right"><strong>{{info.lsData.total}}</strong></td>
+          </tr>
+          {{/isLastPage}}
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  {{#isLastPage}}
+  <table>
+    <tr>
+      <td>
+        <table>
+          <colgroup>
+            <col style="width: 61.3%">
+            <col style="width: 15.6%">
+            <col style="width: 7.8%">
+            <col style="width: 15.3%">
+          </colgroup>
+          <tr class="btmBdr0">
+            <td><strong>Remark:</strong> {{info.lsData.remark}}</td>
+            <td style="text-align: end;"><strong>Total Articles:</strong></td>
+            <td style="text-align: end;"> {{info.lsData.totalArticles}}</td>
+            <td></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <colgroup>
+            <col style="width: 75%">
+            <col style="width: 25%">
+          </colgroup>
+          <tr>
+            <td style="border-bottom: 0">
+              <p>1. The Truck was loaded in my presence.</p>
+              <p>
+                2. The article as per consignment detailed above are correct
+                and they have been taken by me in any position.
+              </p>
+              <p>
+                3. Undertaken to abide by the rules and conditions printed
+                overleaf.
+              </p>
+
+              <div class="bl_checkboxes">
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span> L/D PHOTO
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span> LP COPY
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span> L COPY
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span>RECHECK
+                </div>
+              </div>
+            </td>
+            <td rowspan="2" style="border-bottom: 0">
+              <table>
+                <colgroup>
+                  <col style="width: 69%">
+                  <col style="width: 31%">
+                </colgroup>
+                <tr>
+                  <td><strong>Total Freight:</strong></td>
+                  <td class="right"><strong>{{info.lsData.freight}}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Advance</strong></td>
+                  <td class="right"><strong>{{info.lsData.advance}}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Rent</strong></td>
+                  <td class="right"><strong>{{info.lsData.rent}}</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>RTO</strong></td>
+                  <td class="right"><strong>0.00</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Total Payable:</strong></td>
+                  <td class="right"><strong>{{info.lsData.totalPayable}}</strong></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="btmBdr0">
+            <td>
+              <div class="bl_checkboxes" style="margin: 1mm 0; font-weight: bold">
+                <strong style="color: red">Service Tax will be Paid by</strong>
+                <div class="bl_checkbox" style="margin-left: 3mm">
+                  <span class="checkbox"></span> Consignee
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span> Consignor
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span> Transport
+                </div>
+                <div class="bl_checkbox">
+                  <span class="checkbox"></span>Exempted
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr class="btmBdr0">
+            <td>Rupees in words <strong>{{info.lsData.payable}}</strong></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <colgroup>
+            <col style="width: 33.33%">
+            <col style="width: 33.33%">
+            <col style="width: 33.34%">
+          </colgroup>
+          <tr>
+            <td class="center">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p><strong>Agent/V_Owner Signature</strong></p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p><strong>Driver Signature</strong></p>
+            </td>
+            <td class="center">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p><strong>Dispatch Signature</strong></p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  {{/isLastPage}}
+
+  {{^isLastPage}}
+  <div class="page-break"></div>
+  {{/isLastPage}}
+
+  <div class="page-footer">{{pageNumber}}/{{totalPages}}</div>
+{{/info.lsData.pages}}
+</body>
+
+</html>

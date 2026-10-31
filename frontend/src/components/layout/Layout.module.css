@@ -1,0 +1,60 @@
+body {
+  padding-top: 50px;
+}
+.main {
+  width: 100%;
+  float: left;
+  margin: auto;
+  padding: 15px;
+  min-height: calc(100vh - 130px);
+}
+
+.main1 {
+  width: 100%;
+  float: left;
+  margin: auto;
+  padding: 0px;
+  min-height: calc(100vh - 130px);
+}
+
+.show-menu .left-panel nav::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.show-menu .left-panel::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.show-menu .left-panel nav::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.show-menu .left-panel nav:horizontal {
+  height: 5px;
+}
+
+body {
+  scrollbar-width: thin;
+  /* scrollbar-color: #90A4AE #CFD8DC; */
+}
+
+.show-menu .left-panel nav::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 6px;
+  height: 5px;
+}
+
+.show-menu .left-panel nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid #eaeaea;
+  min-height: 40px;
+  max-height: 80px;
+}
+
+.show-menu .left-panel nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}

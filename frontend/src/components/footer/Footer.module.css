@@ -1,0 +1,17 @@
+footer.mainFooter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+footer.mainFooter hr {
+  width: 100%;
+}
+
+footer.mainFooter p {
+  margin-top: 20px;
+}
+
+footer.mainFooter a {
+  color: #143342;
+  text-decoration: none;
+}
